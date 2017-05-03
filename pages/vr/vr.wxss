@@ -1,0 +1,67 @@
+/**index.wxss**/
+.vr-bg{
+  width: 750rpx;
+  height: 500rpx;
+  background-color: #fff;
+  background: url("https://wt-box.worktile.com/thumb/28d2e6f4-5417-497c-b4ac-a3fb5ebd9344_480x360.png");
+  background-size: 100% 100%;
+  padding-top: 86rpx;
+  box-sizing: border-box;
+}
+.vr-img{
+  width:180rpx;
+  height:110rpx;
+  display:block;
+  margin:0 auto;
+}
+.vr-tit{
+  width:100%;
+  text-align: center;
+  color: #fff;
+  font-size: 38rpx;
+  margin-top: 44rpx;
+}
+.vr-num{
+  width:100%;
+  text-align: center;
+  color: #fff;
+  font-size: 28rpx;
+  margin-top: 40rpx;
+}
+
+.vr-price{
+  font-weight: bold;
+  color: #ff3939;
+  margin-top: 82rpx;
+
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+}
+.vr-price-q{
+  font-size: 86rpx;
+}
+.vr-price-y{
+  font-size: 72rpx;
+}
+.vr-pry{
+  width: 374rpx;
+  height: 90rpx;
+  line-height: 90rpx;
+  margin-top: 76rpx;
+  color: #fff;
+  font-size: 32rpx;
+  background-color: #02ca22;
+}
+.vr-prompt{
+  position: absolute;
+  left: 45rpx;
+  right: 45rpx;
+  bottom: 45rpx;
+  font-size: 26rpx;
+  text-align: center;
+  color: #666;
+  line-height: 36rpx;
+}
