@@ -2,19 +2,12 @@
 <view class="home-bg">
     <image class="home-img" src="../../image/movie.png"></image>
 
-    <view class="home-tit">无影片</view>
-    <view class="home-prompt">您还没有选择影片</view>
-    <view class="home-prompt">请在VR设备中选择影片</view>
-    <view class="home-prompt">再来操作~</view>
-
+    <view class="home-tit">您还没有支付</view>
+    <view class="home-prompt">支付后,享受VR的真实体验.</view>
    
-    <button class="home-btn" bindtap="goToVr">
+    <button class="home-btn" bindtap="scanQrcode">
         <image class="home-btn-icon" src="../../image/sao.png"></image>
         扫描房间内二维码
     </button>
  
 </view>
-
-
-
-

@@ -1,11 +1,12 @@
 {
-  "pages":[
-    "pages/index/index",
-    "pages/logs/logs",
-    "pages/vr/vr",
-    "pages/pay/pay"
-  ],
-  "window":{
+    "pages": [
+        "pages/index/index",
+        "pages/logs/logs",
+        "pages/vr/vr",
+        "pages/pay/pay",
+        "pages/again/again"
+    ],
+    "window": {
 
-  }
+    }
 }

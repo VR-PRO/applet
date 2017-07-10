@@ -1,8 +1,8 @@
 <!--index.wxml-->
 <view class="vr-bg">
   <image class="vr-img" src="../../image/vr-glass.png"></image>
-  <view class="vr-tit">《{{tit}}》</view>
-  <view class="vr-num"> 设备号：{{num}} </view>
+  <view class="vr-tit">《魅影VR》</view>
+  <view class="vr-num"> 设备号：{{devCode}} </view>
 </view>
 
 <view class="vr-price">
@@ -11,7 +11,6 @@
 </view>
 
 <button class="vr-pry" bindtap="goToPay1">使用微信支付</button>
-
 
 <view class="vr-prompt">
     欢迎您使用VR观影，使用微信进行支付即可惊醒观影操作，

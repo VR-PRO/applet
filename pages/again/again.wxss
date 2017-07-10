@@ -1,0 +1,21 @@
+.pay-success{
+    width: 100%;
+}
+.pay-success image{
+    display: block;
+    width: 192rpx;
+    height: 192rpx;
+    margin: 100rpx auto 40rpx;
+}
+.pay-suc-txt{
+    text-align: center;
+    font-size: 38rpx;
+    color: #333;
+    margin-bottom: 40rpx;
+}
+.pay-suc-exp{
+    text-align: center;
+    font-size: 28rpx;
+    color: #666;
+    line-height: 44rpx;
+}

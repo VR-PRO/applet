@@ -1,5 +1,5 @@
 <view class="pay-success">
     <image src="../../image/pay.png"></image>
-    <view class="pay-suc-txt">支付成功</view>
+    <view class="pay-suc-txt">已支付</view>
     <view class="pay-suc-exp">您可以使用VR眼镜进行观影啦～</view>
 </view>
