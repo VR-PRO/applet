@@ -12,13 +12,16 @@ Page({
     },
     data: {
         price: "0.01",
-        devCode: "",
-        userInfo: {}
+        devCode: ""
     },
     onLoad: function(option) {
         var _this = this;
         _this.setData({ devCode: option.devCode + '' });
-
+        wx.showModal({
+            title: '提示-11',
+            showCancel: false,
+            content: JSON.stringify(option),
+        });
         //获取微信信息
         wx.login({
             success: function(res) {
@@ -29,38 +32,42 @@ Page({
                         //     code: res.code
                         // },
                         success: function(_res) {
-                            wx.showModal({
-                                title: '提示',
-                                showCancel: false,
-                                content: JSON.stringify(_this.data),
-                            });
-                            var openId = _res.data.openId;
-                            wx.request({
-                                url: 'https://vr.mtscrm.com/api/v1/order/save',
-                                data: {
-                                    movieKey: openId,
-                                    realFee: _this.data.price,
-                                    devCode: _this.data.devCode
-                                },
-                                method: 'POST',
-                                succe: function(res) {
-                                    //获取微信支付的信息 
-                                    wx.showModal({
-                                        title: '提示-success',
-                                        showCancel: false,
-                                        content: JSON.stringify(_res),
-                                    });
+                            try {
+                                var openId = _res.data.openid;
 
-                                },
-                                fail: function(res) {
-                                    wx.showModal({
-                                        title: '提示-err',
-                                        showCancel: false,
-                                        content: JSON.stringify(_res),
-                                    });
-                                }
-                            });
-                            //创建订单信息   
+                                wx.request({
+                                    url: 'https://vr.mtscrm.com/api/v1/order/save',
+                                    method: 'POST',
+                                    data: {
+                                        movieKey: openId,
+                                        realFee: _this.data.price,
+                                        devCode: option.devCode
+                                    },
+                                    success: function(res) {
+                                        //获取微信支付的信息 
+                                        wx.showModal({
+                                            title: '提示-success',
+                                            showCancel: false,
+                                            content: JSON.stringify(res),
+                                        });
+
+                                    },
+                                    fail: function(res) {
+                                        wx.showModal({
+                                            title: '提示-err',
+                                            showCancel: false,
+                                            content: JSON.stringify(res),
+                                        });
+                                    }
+                                });
+                            } catch (error) {
+                                wx.showModal({
+                                    title: '提示-err-err',
+                                    showCancel: false,
+                                    content: JSON.stringify(error),
+                                });
+                            }
+
                         },
                         fail: function(_res) {
                             wx.showModal({
