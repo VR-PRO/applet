@@ -10,7 +10,7 @@
      <span class="vr-price-y">元</span>
 </view>
 
-<button class="vr-pry" bindtap="goToPay1">使用微信支付</button>
+<button class="vr-pry" bindtap="wxPayClick">使用微信支付</button>
 
 <view class="vr-prompt">
     欢迎您使用VR观影，使用微信进行支付即可惊醒观影操作，

@@ -8,27 +8,21 @@ Page({
                         url: _res.result,
                         method: 'GET',
                         success: function(res) {
-                            if (res.result) { //能查到订单--->直接跳到成功页面
+                            var res = res.data;
+                            if (res.result == 2) {
                                 wx.navigateTo({
                                     url: '../again/again',
                                 })
+                            } else if (res.result == 1) {
+                                wx.navigateTo({
+                                    url: '../vr/vr?devCode=' + res.data.devCode,
+                                })
                             } else {
-                                if (res.msg) { //没有订单,但是有错误 直接弹出错误信息
-                                    wx.showModal({
-                                        title: '提示',
-                                        showCancel: false,
-                                        content: res.msg
-                                    });
-                                } else { //没有订单也没有错误,直接跳转到待支付的页面,并生成一个待支付的订单
-                                    wx.showModal({
-                                        title: '提示--555656',
-                                        showCancel: false,
-                                        content: JSON.stringify(res)
-                                    });
-                                    wx.navigateTo({
-                                        url: '../vr/vr?devCode=' + res.data.devCode,
-                                    })
-                                }
+                                wx.showModal({
+                                    title: '提示',
+                                    showCancel: false,
+                                    content: res.msg
+                                });
                             }
                         }
                     })
