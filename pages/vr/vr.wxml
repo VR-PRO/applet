@@ -1,4 +1,10 @@
 <!--index.wxml-->
+<view>
+    <loading hidden="{{hidden}}">
+        加载中...
+    </loading>
+</view>
+
 <view class="vr-bg">
   <image class="vr-img" src="../../image/vr-glass.png"></image>
   <view class="vr-tit">《魅影VR》</view>

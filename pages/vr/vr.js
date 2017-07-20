@@ -8,20 +8,17 @@ Page({
             'signType': 'MD5',
             'paySign': _this.data.wpay.paySign,
             'success': function(res) {
-                wx.navigateTo({
+                wx.redirectTo({
                     url: '../pay/pay'
                 });
             },
             'fail': function(res) {
-                wx.showModal({
-                    title: '提示',
-                    showCancel: false,
-                    content: res.errMsg
-                });
+                console.error(JSON.stringify(res));  
             }
         })
     },
     data: {
+        hidden:true,
         price: "0.01",
         devCode: "",
         wpay: {},
@@ -31,9 +28,20 @@ Page({
         var _this = this;
         _this.setData({ devCode: option.devCode + '' });
         //获取微信信息
+        _this.setData({ hidden: false });
         wx.getUserInfo({
             success: function(userInfo) {
                 _this.setData({ nickName: userInfo.userInfo.nickName });
+                wx.login({
+                    success: function(res) {
+                        if (res.code) {
+                            getOpenId(res.code, option.devCode);
+                        }
+                    }
+                })
+            },
+            fail : function(){
+                _this.setData({ nickName: '非授权用户' });
                 wx.login({
                     success: function(res) {
                         if (res.code) {
@@ -66,7 +74,7 @@ Page({
                             },
                             success: function(res) {
                                 var data = res.data.data;
-
+                                console.log(data)
                                 if (res.data.result == 2) { //已经支付过了
                                     wx.navigateTo({
                                         url: '../again/again',
@@ -80,6 +88,7 @@ Page({
                                         content: res.data.msg
                                     });
                                 }
+                               _this.setData({ hidden: true });
                             },
                             fail: function(res) {
                                 wx.showModal({
@@ -87,6 +96,7 @@ Page({
                                     showCancel: false,
                                     content: JSON.stringify(res),
                                 });
+                               _this.setData({ hidden: true });
                             }
                         });
                     } catch (error) {
@@ -95,6 +105,7 @@ Page({
                             showCancel: false,
                             content: JSON.stringify(error),
                         });
+                        _this.setData({ hidden: true });
                     }
                 },
                 fail: function(_res) {
@@ -103,6 +114,7 @@ Page({
                         showCancel: false,
                         content: JSON.stringify(_res),
                     });
+                    _this.setData({ hidden: true });
                 }
             })
         };
